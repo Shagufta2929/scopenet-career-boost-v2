@@ -14,6 +14,207 @@ export type Database = {
   }
   public: {
     Tables: {
+      exam_assignments: {
+        Row: {
+          id: string
+          exam_id: string
+          student_id: string
+          assigned_at: string
+          status: "assigned" | "completed"
+        }
+        Insert: {
+          id?: string
+          exam_id: string
+          student_id: string
+          assigned_at?: string
+          status?: "assigned" | "completed"
+        }
+        Update: {
+          id?: string
+          exam_id?: string
+          student_id?: string
+          assigned_at?: string
+          status?: "assigned" | "completed"
+        }
+        Relationships: []
+      }
+      exam_attempts: {
+        Row: {
+          id: string
+          exam_id: string
+          student_id: string
+          started_at: string
+          submitted_at: string | null
+          status: "in_progress" | "submitted" | "auto_submitted"
+          score: number
+          correct_answers: number
+          total_questions: number
+        }
+        Insert: {
+          id?: string
+          exam_id: string
+          student_id: string
+          started_at?: string
+          submitted_at?: string | null
+          status?: "in_progress" | "submitted" | "auto_submitted"
+          score?: number
+          correct_answers?: number
+          total_questions?: number
+        }
+        Update: {
+          id?: string
+          exam_id?: string
+          student_id?: string
+          started_at?: string
+          submitted_at?: string | null
+          status?: "in_progress" | "submitted" | "auto_submitted"
+          score?: number
+          correct_answers?: number
+          total_questions?: number
+        }
+        Relationships: []
+      }
+      exam_attempt_answers: {
+        Row: {
+          id: string
+          attempt_id: string
+          question_id: string
+          selected_option_id: string | null
+          answered_at: string
+        }
+        Insert: {
+          id?: string
+          attempt_id: string
+          question_id: string
+          selected_option_id?: string | null
+          answered_at?: string
+        }
+        Update: {
+          id?: string
+          attempt_id?: string
+          question_id?: string
+          selected_option_id?: string | null
+          answered_at?: string
+        }
+        Relationships: []
+      }
+      exams: {
+        Row: {
+          id: string
+          title: string
+          description: string | null
+          course: string
+          duration_minutes: number
+          total_marks: number
+          passing_marks: number
+          is_active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          description?: string | null
+          course: string
+          duration_minutes: number
+          total_marks: number
+          passing_marks: number
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          description?: string | null
+          course?: string
+          duration_minutes?: number
+          total_marks?: number
+          passing_marks?: number
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      questions: {
+        Row: {
+          id: string
+          exam_id: string
+          question_text: string
+          marks: number
+          question_order: number
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          exam_id: string
+          question_text: string
+          marks?: number
+          question_order: number
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          exam_id?: string
+          question_text?: string
+          marks?: number
+          question_order?: number
+          created_at?: string
+        }
+        Relationships: []
+      }
+      question_options: {
+        Row: {
+          id: string
+          question_id: string
+          option_text: string
+          option_order: number
+          is_correct: boolean
+        }
+        Insert: {
+          id?: string
+          question_id: string
+          option_text: string
+          option_order: number
+          is_correct?: boolean
+        }
+        Update: {
+          id?: string
+          question_id?: string
+          option_text?: string
+          option_order?: number
+          is_correct?: boolean
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          id: string
+          student_id: string | null
+          full_name: string
+          role: "student" | "admin"
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id: string
+          student_id?: string | null
+          full_name: string
+          role: "student" | "admin"
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          student_id?: string | null
+          full_name?: string
+          role?: "student" | "admin"
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       enquiries: {
         Row: {
           batch: string | null
